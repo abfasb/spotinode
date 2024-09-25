@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Playing - <%= song.title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between">
+
+    <header class="bg-gradient-to-r from-black to-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png" class="h-10 w-auto" alt="SpotiNode Logo">
+                <h1 class="text-4xl text-green-400 font-extrabold tracking-wide">SpotiNode</h1>
+            </div>
+    
+            <nav class="flex gap-6 space-x-6 text-lg">
+                <a href="/songs" class="relative text-white font-medium transition duration-300 transform hover:text-green-400 hover:scale-110">
+                    Songs
+                    <span class="absolute -bottom-2 left-0 w-0 h-1 bg-green-400 transition-all duration-300 hover:w-full"></span>
+                </a>
+                <a href="/upload" class="relative text-white font-medium transition duration-300 transform hover:text-green-400 hover:scale-110">
+                    Upload Song
+                    <span class="absolute -bottom-2 left-0 w-0 h-1 bg-green-400 transition-all duration-300 hover:w-full"></span>
+                </a>
+            </nav>
+    
+            <div class="flex items-center space-x-4">
+                <a href="#" class="rounded-full bg-green-500 text-white p-2 h-10 w-10 flex items-center justify-center hover:bg-green-600 transition duration-300">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="container mx-auto flex-grow">
+        <div class="flex flex-col items-center mt-10">
+            <h2 class="text-4xl font-bold text-green-500 mb-4">Now Playing</h2>
+            
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-2xl">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img src="<%= albumArtUrl %>" alt="<%= song.album %> Cover Art" class="w-24 h-24 rounded-md">
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-2xl font-bold text-green-400"><%= song.title %></h3>
+                        <p class="text-gray-300 mt-2">Artist: <%= song.artist %></p>
+                        <p class="text-gray-400">Album: <%= song.album %></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-center items-center space-x-4">
+                    <a href="/play/<%= previousSongId %>" class="text-gray-400 hover:text-green-500">
+                        <i class="fas fa-step-backward fa-2x"></i>
+                    </a>
+
+                        <audio controls class="w-full mt-2">
+                            <source src="<%= song.song_url %>" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    
+
+                    <!-- Next Button -->
+                    <a href="/play/<%= nextSongId %>" class="text-gray-400 hover:text-green-500">
+                        <i class="fas fa-step-forward fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-gray-900 rounded-lg shadow dark:bg-gray-900 m-4">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="#" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_White.png" class="h-8" alt="Spotinode Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Spotinode</span>
+                </a>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" class="hover:underline">Spotinode™</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+</body>
+</html>
