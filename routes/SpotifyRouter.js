@@ -15,11 +15,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-router.get('/songs', songsController.getAllSongs);
+router.get('/', songsController.getAllSongs);
 router.get('/search', songsController.searchSong);
 router.get('/play/:id', songsController.playSong);
 
-// Upload routes
 router.get('/upload', uploadController.showUploadForm);
 router.post('/upload', upload.single('song'), uploadController.uploadSong);
 

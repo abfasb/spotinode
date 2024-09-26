@@ -10,7 +10,7 @@ exports.uploadSong = async (req, res) => {
 
     try {
         await db.query('INSERT INTO tblsongs (title, artist, album, song_url) VALUES (?, ?, ?, ?)', [title, artist, album, songUrl]);
-        res.redirect('/songs');
+        res.redirect('/');
     } catch (error) {
         console.error(error);
         res.status(500).send('Error uploading song');
